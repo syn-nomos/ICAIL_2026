@@ -19,3 +19,30 @@ ICAIL_2026/
 	│  └─ label_description_file.jsonl
 	└─ eurlex/metrics/
 ```
+
+## Environment Setup
+
+### 1. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+Activate it:
+
+For Linux / macOS
+```bash
+source .venv/bin/activate
+```
+For Windows
+```bash
+.venv\Scripts\activate
+```
+## Install Dependencies
+```bash
+pip install -U pip
+pip install numpy scipy scikit-learn tqdm
+```
+## Running the Experiment
+```bash
+python src/tfidf_experiments.py
+```
