@@ -24,6 +24,7 @@ Official Repository for 21st International Conference on Artificial Intelligence
 *is affected by using specific LLMs as well as the effect of exploiting
 *label hierarchy when generating the label descriptions.
 
+## Scripts
 The tfidf_experiments.py script evaluates a TF-IDF retrieval baseline for multi-label legal text classification by ranking label concept IDs using enriched label descriptions (LLM-generated text).
 All LLM Descriptions used in our experiments are available under LLM_Descriptions folder.
 By default, the script expects this structure relative to the repo root:
