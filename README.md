@@ -42,6 +42,10 @@ For Windows
 pip install -U pip
 pip install numpy scipy scikit-learn tqdm
 ```
+### Running the preparation script
+```bash
+python src/make_jsonl_from_zip.py /path/to/<input-LLM-descriptions>.zip -o eurlex/label_description_file.jsonl
+```
 ### Running the Experiment
 ```bash
 python src/tfidf_experiments.py
