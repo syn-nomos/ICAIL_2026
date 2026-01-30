@@ -103,6 +103,26 @@ def dedup_keep_order(seq):
             out.append(x)
     return out
 
+LABEL_STOPWORDS = {
+
+    "legal","encompasses","refers","concept","regulations","various",
+    "rights","including","compliance","laws","issues","law",
+    "additionally","related","may", "can", "often", "typically", "generally",
+    "various", "certain", "specific", "different","within",
+    "system", "process", "mechanism", "framework", "approach", "context",
+    "area", "field", "scope", "domain", "structure", "refers", "covers",
+    "concerns", "addresses", "relates","is","are","be","being"
+
+    # "refers", "covers", "concerns", "addresses", "relates",
+    # "aims", "focuses", "defines", "establishes", "regulates",
+    # "is","are","be","being","includes","involves","may", "can", "often", "typically", "generally",
+    # "various", "certain", "specific", "different"
+}
+def remove_label_stopwords(text: str) -> str:
+    toks = text.split()
+    toks = [t for t in toks if t not in LABEL_STOPWORDS]
+    return " ".join(toks)
+
 # =========================
 # 1) LOAD LOOKUP JSONL
 # =========================
@@ -130,6 +150,7 @@ def load_llm_lookup(jsonl_path: str, use_label_name_prefix: bool = True):
             cid = str(cid).strip()
 
             desc = obj.get("LLM_Response_text")
+            desc = remove_label_stopwords(desc)
             if not desc:
                 missing_desc += 1
                 continue
@@ -265,7 +286,7 @@ def run():
                     print(f"\n===== analyzer={analyzer} ngram={ngram_range} min_df={min_df} max_df={max_df} =====")
 
                     vec = build_vectorizer(analyzer, ngram_range, min_df, max_df)
-                    vec.fit(train_docs)  # you can also add bank_texts if you want: train_docs + bank_texts
+                    vec.fit(train_docs + bank_texts)  # you can also add bank_texts if you want: train_docs + bank_texts
 
                     label_vecs = vec.transform(bank_texts)
                     doc_vecs = vec.transform(test_docs)
