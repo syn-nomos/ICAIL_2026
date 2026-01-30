@@ -27,7 +27,7 @@ ALLOWED_NGRAMS = {
 }
 
 TOP_K_VALUES = [1, 3, 5, 10, 15, 20, 50, 100]
-TOP_K_MAX = 500 #adjust this for quick run
+TOP_K_MAX = 1000 #adjust this for quick run
 
 # =========================
 # PATHS
