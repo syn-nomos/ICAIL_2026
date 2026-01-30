@@ -54,3 +54,12 @@ Text Classification](https://www.csie.ntu.edu.tw/~cjlin/papers/zero_shot_one_sid
 
 ## RTS
 Details for experiments are available at ["Structural Contrastive Representation Learning for Zero-shot Multi-label Text Classification" in Findings of EMNLP 2022](https://github.com/tonyzhang617/structural-contrastive-representation-learning)
+
+
+## Datasets
+
+### EURLEX57K
+EURLEX57K could be downloaded from [EURLEX57K](https://huggingface.co/datasets/jonathanli/eurlex)
+
+### Mulit-Eurlex
+Mulit-Eurlex could be downloaded from [Mulit-Eurlex](https://huggingface.co/datasets/nlpaueb/multi_eurlex)
