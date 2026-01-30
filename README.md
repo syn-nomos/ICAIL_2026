@@ -37,12 +37,17 @@ For Windows
 ```bash
 .venv\Scripts\activate
 ```
-## Install Dependencies
+### Install Dependencies
 ```bash
 pip install -U pip
 pip install numpy scipy scikit-learn tqdm
 ```
-## Running the Experiment
+### Running the Experiment
 ```bash
 python src/tfidf_experiments.py
 ```
+
+## OF-LAN
+
+Details for experiments are available at [Preserving Zero-shot Capability in Supervised Fine-tuning for Multi-label
+Text Classification](https://www.csie.ntu.edu.tw/~cjlin/papers/zero_shot_one_side_tuning/)

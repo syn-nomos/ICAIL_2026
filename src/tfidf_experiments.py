@@ -17,14 +17,14 @@ from tqdm import tqdm
 EXPERIMENTS = {
     "analyzers": ["word", "char"],
     "ngram_ranges": [(1,1), (1,2), (1,3), (2,2), (4,4), (5,5)],
-    "min_dfs": [1, 2],
-    "max_dfs": [0.98, 0.99, 1.0],
+    "min_dfs": [1, 2, 3, 4],
+    "max_dfs": [0.95, 0.98, 0.99, 1.0],
 }
 
-# ALLOWED_NGRAMS = {
-#     "char": [(4, 4), (5, 5)],
-#     "word": [(1, 1), (1, 2), (1, 3), (2, 2)],
-# }
+ALLOWED_NGRAMS = {
+     #"char": [(4, 4), (5, 5)],
+     #"word": [(1, 1), (1, 2), (1, 3), (2, 2)],
+}
 
 TOP_K_VALUES = [1, 3, 5, 10, 15, 20, 50, 100]
 TOP_K_MAX = 500 #adjust this for quick run
@@ -40,10 +40,10 @@ DATASET_DIRS = {
 }
 
 
-# Each line should contain at least: {"label": "<concept_id>", "label_name": "...", "LLM_Response_text": "..."}
+# Each line should contain at least: {"label": "<concept_id>", "label": "...", "LLM_Response_text": "..."}
 LLM_LOOKUP_JSONL = "./eurlex/label_description_file.jsonl"
 USE_TFIDF_STRENGTHENING = True
-IDF_ALPHA = 1.2
+
 # output
 OUTPUT_DIR = "./eurlex/metrics"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -53,13 +53,13 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # =========================
 def clean_text(text: str) -> str:
     text = (text or "").lower()
-    text = re.sub(r"[.,;:!?'-]", " ", text)
+    text = re.sub(r"[.,;:!?']", " ", text)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
 def doc_text(item: dict) -> str:
     parts = []
-    for key in ["title", "recitals", "main_body", "annexes", "preamble"]:
+    for key in ["title", "main_body"]: #, "recitals", "annexes", "preamble"
         if key in item and item[key]:
             if isinstance(item[key], list):
                 parts.extend(x for x in item[key] if isinstance(x, str))
@@ -123,7 +123,7 @@ def load_llm_lookup(jsonl_path: str, use_label_name_prefix: bool = True):
                 continue
             obj = json.loads(line)
 
-            # ✅ FIX: use concept_id as the key
+            #use concept_id as the key
             cid = obj.get("concept_id")
             if cid is None:
                 continue
@@ -270,11 +270,11 @@ def run():
                     label_vecs = vec.transform(bank_texts)
                     doc_vecs = vec.transform(test_docs)
 
-                    label_vecs = apply_idf_power(label_vecs, vec, IDF_ALPHA)
-                    doc_vecs = apply_idf_power(doc_vecs, vec, IDF_ALPHA)
+                    label_vecs = apply_idf_power(label_vecs, vec, 1.6)
+                    doc_vecs = apply_idf_power(doc_vecs, vec, 1.0)
 
                     if label_vecs.shape[0] == 0:
-                        print("⚠️ No labels available to score.")
+                        print("No labels available to score.")
                         continue
 
                     scores = linear_kernel(doc_vecs, label_vecs)
