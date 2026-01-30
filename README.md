@@ -51,3 +51,6 @@ python src/tfidf_experiments.py
 
 Details for experiments are available at [Preserving Zero-shot Capability in Supervised Fine-tuning for Multi-label
 Text Classification](https://www.csie.ntu.edu.tw/~cjlin/papers/zero_shot_one_side_tuning/)
+
+## RTS
+Details for experiments are available at ["Structural Contrastive Representation Learning for Zero-shot Multi-label Text Classification" in Findings of EMNLP 2022](https://github.com/tonyzhang617/structural-contrastive-representation-learning)
