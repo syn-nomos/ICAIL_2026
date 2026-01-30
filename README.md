@@ -4,7 +4,7 @@ Official Repository for 21st International Conference on Artificial Intelligence
 
 tfidf_experiments.py
 This script evaluates a TF-IDF retrieval baseline for multi-label legal text classification by ranking label concept IDs using enriched label descriptions (LLM-generated text).
-
+All LLM Descriptions used in our experiments are available under LLM_Descriptions folder.
 By default, the script expects this structure relative to the repo root:
 ```text
 ICAIL_2026/
