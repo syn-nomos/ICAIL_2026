@@ -2,7 +2,7 @@
 Official Repository for 21st International Conference on Artificial Intelligence and Law. 
 "Multi-label Legal Text Classification Using Enriched Label Descriptions"
 
-##Abstract
+## Abstract
 
 *Multi-label text classification is important in the legal domain where
 *documents naturally involve multiple topics and capturing all of
