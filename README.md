@@ -71,6 +71,3 @@ Details for experiments are available at ["Structural Contrastive Representation
 
 ### EURLEX57K
 EURLEX57K could be downloaded from [EURLEX57K](https://huggingface.co/datasets/jonathanli/eurlex)
-
-### Mulit-Eurlex
-Mulit-Eurlex could be downloaded from [Mulit-Eurlex](https://huggingface.co/datasets/nlpaueb/multi_eurlex)
