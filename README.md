@@ -1,6 +1,6 @@
 # ICAIL_2026: Multi-label Legal Text Classification Using Enriched Label Descriptions
-Official Repository for 21st International Conference on Artificial Intelligence and Law. 
-"Multi-label Legal Text Classification Using Enriched Label Descriptions"
+Official Repository for the paper:
+P. Petropoulos, A. Kaiserlis, and E. Stamatatos: "Multi-label Legal Text Classification Using Enriched Label Descriptions", In Proc. of the 21st International Conference on Artificial Intelligence and Law.
 
 ## Abstract
 
